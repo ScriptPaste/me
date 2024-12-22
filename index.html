@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="wicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROBLOX MOBILE SCRIPT & EXECUTOR | iiDaam</title>
+  <!-- Link Feather Icons CDN -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #020211;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #021418;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .profile h1 {
+      margin: 10px 0 5px;
+      color: white;
+    }
+    .profile p {
+      margin: 5px 0 20px;
+      color: #555;
+    }
+    .links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 5px auto;
+      padding: 5px 8px;
+      text-decoration: none;
+      color: white;
+      background: #007bff;
+      border-radius: 5px;
+      font-size: 14px;
+      max-width: 200px;
+      width: auto;
+    }
+    .links a:hover {
+      background: #0056b3;
+    }
+    .links a svg {
+      margin-right: 8px;
+      width: 16px;
+      height: 16px;
+    }
+    .additional-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .additional-buttons button {
+      padding: 10px 20px;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background: #007bff;
+      color: white;
+      transition: background 0.3s;
+    }
+    .additional-buttons button:hover {
+      background: #0056b3;
+    }
+    .box {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #021418;
+      border: 1px solid grey;
+      border-radius: 5px;
+      text-align: left;
+      display: none; /* Awalnya disembunyikan */
+      transform: translateX(100%);
+      transition: transform 0.4s ease-in-out, opacity 0.4s;
+      opacity: 0;
+    }
+    .box p {
+      color: white;
+      font-size: 20px;
+    }
+    .box.active {
+      display: block;
+      transform: translateX(0);
+      opacity: 1;
+    }
+    .executor-content img,
+    .script-content img {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    .executor-content a,
+    .script-content a {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+    .executor-content a:hover,
+    .script-content a:hover {
+      background-color: #0056b3;
+    }
+    .gradient-text {
+      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+    }
+    .horizontal-line {
+      margin: 10px 0;
+      border: 0;
+      border-top: 2px solid #ddd;
+    }
+  .torn-paper {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    clip-path: polygon(
+      0% 0%, 
+      100% 0%, 
+      100% 90%, 
+      95% 95%, 
+      90% 92%, 
+      85% 97%, 
+      75% 90%, 
+      60% 95%, 
+      40% 85%, 
+      25% 95%, 
+      10% 90%, 
+      0% 95%
+    );
+    background: white; /* Optional: Base background color for torn edges */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds depth */
+  }
+
+  .script-content img,
+  .executor-content img {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Additional styling for transition */
+  .torn-paper {
+    transition: transform 0.4s ease-in-out, opacity 0.4s;
+  }
+    footer {
+      margin-top: 20px;
+      color: #888;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Container utama -->
+  <div class="container">
+    <!-- Profil -->
+    <div class="profile">
+      <img src="Pp.png" alt="Profile Photo" class="profile-photo">
+      <h1>iiDaam</h1>
+      <p>ROBLOX MOBILE SCRIPT AND EXECUTOR</p>
+    </div>
+
+    <!-- Daftar Tautan -->
+    <div class="links">
+      <a href="https://instagram.com/yourusername" target="_blank">
+        <i data-feather="instagram"></i>Instagram
+      </a>
+      <a href="https://youtube.com/yourchannel" target="_blank">
+        <i data-feather="youtube"></i>YouTube
+      </a>
+      <a href="https://tiktok.com/@yourusername" target="_blank">
+        <i data-feather="music"></i>TikTok
+      </a>
+    </div>
+  </div>
+
+  <!-- Tombol Tambahan -->
+  <div class="additional-buttons">
+    <button id="scriptButton">Script</button>
+    <button id="executorButton">Executor</button>
+  </div>
+
+<!-- Box Script -->
+<div id="scriptBox" class="box">
+  <div class="script-content">
+    <h3 class="gradient-text">Mobile Script</h3>
+    <hr class="horizontal-line">
+    <img src="REDZHUB.jpg" alt="Script Image" class="torn-paper">
+    <a href="https://www.scriptcopypaste.ct.ws/bloxfruits/" target="_blank">Visit Script Link</a>
+    <p>BLOX FRUITS SCRIPT!
+     UPDATED : COMING</p>
+  </div>
+</div>
+
+<!-- Box Executor -->
+<div id="executorBox" class="box">
+  <div class="executor-content">
+    <h3 class="gradient-text">Mobile Executor</h3>
+    <hr class="horizontal-line">
+    <img src="Delta.jpg" alt="Executor Image" class="torn-paper">
+    <a href="https://moneyblink.com/dyo3rS" target="_blank">Download Executor</a>
+    <p>DELTA X EXECUTOR ANDROID!
+      Credits : Ixnny/DeltaTeam
+    </p>
+  </div>
+</div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2024 Indonesian | iiDaam. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Script to load Feather Icons -->
+  <script>
+    feather.replace();
+
+    const scriptButton = document.getElementById('scriptButton');
+    const executorButton = document.getElementById('executorButton');
+    const scriptBox = document.getElementById('scriptBox');
+    const executorBox = document.getElementById('executorBox');
+
+    scriptButton.addEventListener('click', () => {
+      scriptBox.classList.add('active');
+      executorBox.classList.remove('active');
+    });
+
+    executorButton.addEventListener('click', () => {
+      executorBox.classList.add('active');
+      scriptBox.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
+
